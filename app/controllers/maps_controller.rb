@@ -1,4 +1,6 @@
 class MapsController < ApplicationController
+	http_basic_authenticate_with name: "yuda", password: "secret", except: [:index, :show]
+
 def index
 		@maps = Map.all
 		respond_to do |format|
