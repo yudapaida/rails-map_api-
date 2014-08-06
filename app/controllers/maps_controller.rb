@@ -1,4 +1,6 @@
 class MapsController < ApplicationController
+	before_action :authorize, except: [:index, :show]
+
 def index
 		@maps = Map.all
 		respond_to do |format|
