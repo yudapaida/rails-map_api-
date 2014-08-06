@@ -1,0 +1,22 @@
+<h1> Edit Place </h1>
+<% if !@map.errors.empty? %>
+	<% @map.errors.full_messages.each do |msg| %>
+	<h4 style="color:red;"><%= msg %></h4>
+	<% end %>
+<% end %>
+
+<%= form_for @map do |f| %>
+	<%= f.label :name %>
+	<br/>
+	<%= f.text_field :name %>
+	<br/>
+	<%= f.label :latitude %>
+	<br/>
+	<%= f.text_field :longitude %>
+	<br/>
+	<%= f.label :longitude %>
+	<br/>
+	<%= f.text_field :longitude %>
+	<br/>
+	<%= f.submit %>
+<% end %>

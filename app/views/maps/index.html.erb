@@ -1,0 +1,23 @@
+<h1> All Places </h1>
+<table>
+	<tr> 
+		<th>Name </th>
+		<th>Latitude </th>
+		<th>Longitude </th>
+		<th></th>
+		<th></th>
+		
+	</tr>
+<% @maps.each do |map| %>
+	<tr> 
+		<td><%= map.name %> </td>
+		<td><%= map.latitude %> </td>
+		<td><%= map.longitude %></td>
+		<td><%= link_to 'Edit', edit_map_path(map) %></td>
+		<td><%= link_to 'Delete', map, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	</tr>
+<% end %>
+</table>
+<br>
+<br>
+<button> <%= link_to 'New Place', new_map_path %></button>
