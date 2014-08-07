@@ -1,0 +1,6 @@
+<h1><%= @map.name %></h1>
+<p>Latitude: <%= @map.latitude %></p>
+<p>Longitude: <%= @map.longitude %></p>
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@map.latitude}%2C#{@map.longitude}" %>
+
+<p><%= link_to 'Back to Home', maps_path %></p>

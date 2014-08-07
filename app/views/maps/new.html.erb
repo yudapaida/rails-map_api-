@@ -7,16 +7,11 @@
 
 <%= form_for @map do |f| %>
 	<%= f.label :name %>
-	<br/>
 	<%= f.text_field :name %>
-	<br/>
 	<%= f.label :latitude %>
-	<br/>
 	<%= f.text_field :latitude %>
-	<br/>
 	<%= f.label :longitude %>
-	<br/>
 	<%= f.text_field :longitude %>
 	<br/>
-	<%= f.submit %>
+	<%= f.submit class: 'button radius small'%>
 <% end %>

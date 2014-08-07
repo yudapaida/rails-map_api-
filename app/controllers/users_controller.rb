@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 		@user = User.new(params.require(:user).permit(:email, :password, :password_confirmation))
 		#respond_to do |format|
 		if @user.save
+			session[:user_id] = @user.id
 			#format.html
 			redirect_to maps_path, notice: 'Successfully create user'
 		else 

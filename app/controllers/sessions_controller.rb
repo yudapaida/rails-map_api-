@@ -5,18 +5,25 @@ class SessionsController < ApplicationController
 		#3. handle respose
 
 		user = User.find_by(email: params[:email])
-		if user && user.authenticate(params[:password])
+		respond_to do |format|
+			if user && user.authenticate(params[:password])
+				format.html do
 			#login successfully
 			session[:user_id] = user.id
 			redirect_to maps_path, notice: "Logged In !"
-		else
+		end
+		format.json {render json: user}
+	else
+		format.html do
 			flash.now.alert = "Invalid email or password"
 			render :new
 		end
-		
+		format.json {render json: "Invalid email or password"}
 	end
-	def destroy
-		session[:user_id] = nil
-		redirect_to maps_path, notice: "Logged out !"
-	end
+end
+end
+def destroy
+	session[:user_id] = nil
+	redirect_to maps_path, notice: "Logged out !"
+end
 end

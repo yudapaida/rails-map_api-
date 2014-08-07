@@ -1,12 +1,12 @@
 class MapsController < ApplicationController
 	before_action :authorize, except: [:index, :show]
 
-def index
+	def index
 		@maps = Map.all
 		respond_to do |format|
 			format.html
-			format.json {render json:@maps}
-			format.xml {render xml:@maps}
+			format.json {render json: @maps}
+			format.xml {render xml: @maps}
 		end				
 	end
 
@@ -16,10 +16,12 @@ def index
 	end
 
 	def show
-		map = Map.find(params[:id])
-		render json: map
+		@map = Map.find(params[:id])
+		respond_to do |format|
+			format.html
+			format.json { render json: @map }
+		end
 	end
-
 	def create
 		#menyimpan semua params dari user
 		#render json: params
@@ -44,12 +46,12 @@ def index
 	end
 
 	def destroy
-    @map = Map.find(params[:id])
-    @map.destroy
-    respond_to do |format|
-      format.html { redirect_to maps_path, notice: 'Model was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+		@map = Map.find(params[:id])
+		@map.destroy
+		respond_to do |format|
+			format.html { redirect_to maps_path, notice: 'Model was successfully destroyed.' }
+			format.json { head :no_content }
+		end
+	end
 end
 
